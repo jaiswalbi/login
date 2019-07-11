@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="loginController" class="com.controllers.LoginController">
+		<property name="loginService" ref="loginService"></property>
+	</bean>
+
+	<bean id="signupController" class="com.controllers.SignupController">
+		<property name="signupService" ref="signupService"></property>
+	</bean>
+
+	<bean id="loginService" class="com.services.LoginService">
+		 <property name="coustomerLoginRepository"
+			ref="coustomerLoginRepository"></property> 
+	</bean>
+
+	<bean id="signupService" class="com.services.SignupService">
+		<property name="customerLoginRepository"
+			ref="coustomerLoginRepository"></property>
+	</bean>
+
+	<bean id="coustomerLoginRepository"
+		class="com.hib.reposetory.CoustomerLoginRepository">
+
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+</beans>
